@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abeltran <abeltran@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: abeltran <abeltran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:25:38 by abeltran          #+#    #+#             */
-/*   Updated: 2023/03/06 14:16:58 by abeltran         ###   ########.fr       */
+/*   Updated: 2023/03/09 20:33:11 by abeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	ft_init(t_data *data)
 	data->x = 0;
 	data->y = 0;
 	data->key_pressed = 0;
+	data->exit = 0;
 }
 
 int	ft_start(void)
@@ -51,6 +52,15 @@ int	ft_start(void)
 	ft_init(&data);
 	read_map_file("src/test", &data);
 	ft_collectibles(&data);
+	if (!ft_validate(&data))
+	{
+		ft_printf("Mapa no válido.\n");
+		for (int i = 0; i < data.size_y; ++i)
+		ft_printf("%s\n", data.map[i]);
+		return (EXIT_FAILURE);
+	}
+	read_map_file("src/test", &data);
+	data.collectibles = 0;
 	data.mlx = mlx_init(data.size_x * 32, data.size_y * 32, "so_long", true);
 	if (!data.mlx)
 		return (EXIT_FAILURE);

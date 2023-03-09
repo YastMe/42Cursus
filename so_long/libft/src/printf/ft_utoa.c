@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abeltran <abeltran@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: abeltran <abeltran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 12:05:16 by abeltran          #+#    #+#             */
-/*   Updated: 2023/02/28 13:50:12 by abeltran         ###   ########.fr       */
+/*   Updated: 2023/03/09 20:11:08 by abeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*ft_utoa(unsigned int n)
 	char	*str;
 
 	i = ft_count_digits(n);
-	if (n < 0 || n == 0)
+	if (n == 0)
 		i++;
 	str = (char *) malloc(i + 1);
 	if (!str)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abeltran <abeltran@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: abeltran <abeltran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:49:37 by abeltran          #+#    #+#             */
-/*   Updated: 2023/03/06 15:21:08 by abeltran         ###   ########.fr       */
+/*   Updated: 2023/03/09 20:07:03 by abeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct s_data
 	mlx_image_t		**images;
 	char			**map;
 	char			key_pressed;
+	char			end;
+	char			exit;
 	int				x;
 	int				y;
 	int				size_x;
@@ -42,7 +44,6 @@ typedef struct s_data
 	int				moves;
 	int				collectibles;
 	int				total_collectibles;
-	char			end;
 }	t_data;
 
 typedef struct s_checker
@@ -51,6 +52,12 @@ typedef struct s_checker
 	char	**map;
 	int		collectibles;
 }	t_checker;
+
+typedef struct  s_point
+{
+	int	x;
+	int	y;
+}	t_point;
 
 void	ft_update(void *param);
 void	read_map_file(char *map_file, t_data *data);
@@ -66,5 +73,6 @@ void	ft_check_end(t_data *data);
 void	ft_check_collectibles(t_data *data);
 void	ft_collectibles(t_data *data);
 int		ft_collectible_list(t_data *data, mlx_image_t *image);
+int		ft_validate(t_data *data);
 
 #endif
