@@ -6,11 +6,11 @@
 /*   By: abeltran <abeltran@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:18:44 by abeltran          #+#    #+#             */
-/*   Updated: 2023/03/15 11:23:40 by abeltran         ###   ########.fr       */
+/*   Updated: 2023/03/15 15:13:26 by abeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/so_long_bonus.h"
 
 void	ft_disable_exits(t_data *data)
 {
@@ -66,6 +66,8 @@ int	ft_fill_map(t_data *data)
 				ft_render_sprite(i, j, data, data->textures->water);
 			else if (data->map[i][j] == 'C')
 				ft_render_sprite(i, j, data, data->textures->coffee);
+			else if (data->map[i][j] == 'T')
+				ft_render_sprite(i, j, data, data->textures->trap_0);
 			else if (data->map[i][j] == 'E')
 				ft_render_exits(i, j, data);
 			j++;

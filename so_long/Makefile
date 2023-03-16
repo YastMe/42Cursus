@@ -8,7 +8,20 @@ CFILES = src/main.c\
 		 src/collectibles.c\
 		 src/validate_map.c
 
-LIBFT = libft/libft.a
+CBONUS = src_bonus/main.c\
+		 src_bonus/movement.c\
+		 src_bonus/read_map.c\
+		 src_bonus/render/render_map.c\
+		 src_bonus/render/render.c\
+		 src_bonus/start.c\
+		 src_bonus/finish.c\
+		 src_bonus/collectibles.c\
+		 src_bonus/validate_map.c\
+		 src_bonus/traps.c\
+		 src_bonus/load_animations.c\
+		 src_bonus/render/render_moves.c
+
+LIBFT = Libft/libft.a
 MLX42 = MLX42/libmlx42.a
 
 NAME = so_long
@@ -16,11 +29,19 @@ NAME = so_long
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(MLX42)
-#	@gcc -Wall -Wextra -Werror $(CFILES) $(LIBFT) $(MLX42) -framework Cocoa -framework OpenGL -framework IOKit -Iinclude -lglfw -L"/Users/abeltran/.brew/opt/glfw/lib/" -o $(NAME) -g
-	@gcc -Wall -Wextra -Werror $(CFILES) $(LIBFT) $(MLX42) -Iinclude -ldl -lglfw -pthread -lm -o $(NAME) -g
+#	MACOS
+	@gcc -Wall -Wextra -Werror $(CFILES) $(LIBFT) $(MLX42) -framework Cocoa -framework OpenGL -framework IOKit -Iinclude -lglfw -L"/Users/abeltran/.brew/opt/glfw/lib/" -o $(NAME)
+#	Linux
+#	@gcc -Wall -Wextra -Werror $(CFILES) $(LIBFT) $(MLX42) -Iinclude -ldl -lglfw -pthread -lm -o $(NAME) -g
+
+bonus: $(LIBFT) $(MLX42)
+#	MACOS
+	@gcc -Wall -Wextra -Werror $(CBONUS) $(LIBFT) $(MLX42) -framework Cocoa -framework OpenGL -framework IOKit -Iinclude -lglfw -L"/Users/abeltran/.brew/opt/glfw/lib/" -o $(NAME)
+#	Linux
+#	@gcc -Wall -Wextra -Werror $(CBONUS) $(LIBFT) $(MLX42) -Iinclude -ldl -lglfw -pthread -lm -o $(NAME) -g
 
 $(LIBFT):
-	@make -C libft
+	@make -C Libft
 
 $(MLX42):
 	@make -C MLX42/

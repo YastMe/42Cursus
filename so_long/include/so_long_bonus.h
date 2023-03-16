@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abeltran <abeltran@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:49:37 by abeltran          #+#    #+#             */
-/*   Updated: 2023/03/16 15:37:53 by abeltran         ###   ########.fr       */
+/*   Updated: 2023/03/16 15:43:43 by abeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include "../libft/include/libft.h"
 # include "../MLX42/include/MLX42/MLX42.h"
@@ -29,18 +29,27 @@ typedef struct s_textures
 	mlx_texture_t	*exit_2;
 	mlx_texture_t	*exit_3;
 	mlx_texture_t	*exit_4;
+	mlx_texture_t	*trap_0;
+	mlx_texture_t	*trap_1;
 }	t_textures;
 
 typedef struct s_data
 {
 	mlx_t			*mlx;
 	mlx_image_t		*character;
-	t_textures		*textures;
+	mlx_image_t		*text;
 	mlx_image_t		**collectible_images;
 	mlx_image_t		**exit_images;
+	mlx_image_t		**trap_images;
+	mlx_image_t		**active_traps;
+	mlx_image_t		**inactive_traps;
+	mlx_image_t		**anim_image_frames;
+	mlx_texture_t	**anim_texture_frames;
+	t_textures		*textures;
 	char			**map;
 	char			key_pressed;
 	char			end;
+	char			loaded_anims;
 	int				x;
 	int				y;
 	int				size_x;
@@ -48,6 +57,9 @@ typedef struct s_data
 	int				moves;
 	int				collectibles;
 	int				total_collectibles;
+	int				total_traps;
+	int				rendered_traps;
+	unsigned long	frame;
 }	t_data;
 
 /**
@@ -64,6 +76,7 @@ void	ft_update(void *param);
  * @param data 
  */
 void	read_map_file(char *map_file, t_data *data);
+
 /**
  * @brief Handles the termination of the program.
  * 
@@ -81,7 +94,7 @@ int		ft_start(char *file);
 
 /**
  * @brief Finds the player's starting position and saves 
- * 		  it to data->x and data->y
+ * 		  it to data->x and data->y.
  * 
  * @param data 
  */
@@ -182,5 +195,58 @@ void	ft_free_map(t_data *data);
  * @param data 
  */
 void	ft_render_exits(int i, int j, t_data *data);
+
+/**
+ * @brief Counts the occurrences of the given char in the map.
+ * 
+ * @param c 
+ * @param map 
+ * @return int 
+ */
+int		ft_count(char c, char **map);
+
+/**
+ * @brief Creates/Updates the trap array for later use.
+ * 
+ * @param data 
+ * @param image 
+ * @return int 
+ */
+int		ft_trap_list(t_data *data, mlx_image_t *image);
+
+/**
+ * @brief Updates every trap status if aplicable.
+ * 
+ * @param data 
+ */
+void	ft_update_traps(t_data *data);
+
+/**
+ * @brief Handles the frame counter.
+ * 
+ * @param data 
+ */
+void	ft_time(t_data *data);
+
+/**
+ * @brief Checks if the player is colliding with an activated trap.
+ * 
+ * @param data 
+ */
+void	ft_check_traps(t_data *data);
+
+/**
+ * @brief Loads the player's animation files.
+ * 
+ * @param data 
+ */
+void	ft_load_anims(t_data *data);
+
+/**
+ * @brief Renders the number of moves into the screen.
+ * 
+ * @param data 
+ */
+void	ft_render_moves(t_data *data);
 
 #endif

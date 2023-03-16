@@ -6,11 +6,11 @@
 /*   By: abeltran <abeltran@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:25:38 by abeltran          #+#    #+#             */
-/*   Updated: 2023/03/15 10:52:34 by abeltran         ###   ########.fr       */
+/*   Updated: 2023/03/16 14:36:22 by abeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/so_long_bonus.h"
 
 void	ft_print_data(t_data *data)
 {
@@ -44,6 +44,8 @@ void	ft_init(t_data *data)
 	data->key_pressed = 0;
 	data->collectible_images = NULL;
 	data->exit_images = NULL;
+	data->total_traps = 0;
+	data->rendered_traps = 0;
 }
 
 int	ft_weird_characters(char **map, int size_x, int size_y)
@@ -58,7 +60,8 @@ int	ft_weird_characters(char **map, int size_x, int size_y)
 		while (j < size_x)
 		{
 			if (map[i][j] != 'P' && map[i][j] != 'E' && map[i][j] != 'C'
-				&& map[i][j] != '0' && map[i][j] != '1' && map[i][j] != '\n')
+				&& map[i][j] != '0' && map[i][j] != '1'
+				&& map[i][j] != 'T' && map[i][j] != '\n')
 				return (1);
 			j++;
 		}

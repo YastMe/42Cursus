@@ -6,11 +6,11 @@
 /*   By: abeltran <abeltran@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 11:21:00 by abeltran          #+#    #+#             */
-/*   Updated: 2023/03/15 11:29:01 by abeltran         ###   ########.fr       */
+/*   Updated: 2023/03/15 15:43:54 by abeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/so_long_bonus.h"
 
 void	ft_get_exit(t_data *data)
 {

@@ -6,7 +6,7 @@
 /*   By: abeltran <abeltran@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:01:38 by abeltran          #+#    #+#             */
-/*   Updated: 2023/03/03 16:49:30 by abeltran         ###   ########.fr       */
+/*   Updated: 2023/03/16 15:41:19 by abeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ char	*ft_strjoin(char *full_str, char *buff)
 	}
 	if (!full_str || !buff)
 		return (NULL);
-	str = malloc(sizeof(char) * (ft_strlen_gnl(full_str) + ft_strlen_gnl(buff) + 1));
+	str = malloc(sizeof(char) * (ft_strlen_gnl(full_str)
+				+ ft_strlen_gnl(buff) + 1));
 	if (!str)
 		return (NULL);
 	i = -1;

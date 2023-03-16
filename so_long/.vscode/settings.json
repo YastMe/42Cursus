@@ -1,12 +1,10 @@
 {
 	"files.associations": {
+		"unistd.h": "c",
+		"mlx42.h": "c",
+		"libft.h": "c",
 		"so_long.h": "c",
-		"array": "c",
-		"deque": "c",
-		"string": "c",
-		"unordered_map": "c",
-		"vector": "c",
-		"string_view": "c",
-		"initializer_list": "c"
+		"fcntl.h": "c",
+		"so_long_bonus.h": "c"
 	}
 }

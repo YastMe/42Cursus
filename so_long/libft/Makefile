@@ -95,10 +95,10 @@ $(GET_NEXT_LINE_OBJECT): $(GET_NEXT_LINE_FILES)
 	@mv $(addsuffix .o, $(GET_NEXT_LINE_NAMES)) $(GET_NEXT_LINE_OBJ)
 
 clean:
-	rm -rf obj/
+	@rm -rf obj/
 
 fclean:
-	rm -rf $(NAME) obj/
+	@rm -rf $(NAME) obj/
 
 re: fclean all
 

@@ -6,11 +6,11 @@
 /*   By: abeltran <abeltran@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 14:18:51 by abeltran          #+#    #+#             */
-/*   Updated: 2023/03/15 10:08:45 by abeltran         ###   ########.fr       */
+/*   Updated: 2023/03/15 14:57:36 by abeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/so_long_bonus.h"
 
 int	ft_count_rows(char *map_file)
 {
