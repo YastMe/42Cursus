@@ -1,13 +1,14 @@
 #DATABASE
 DB_NAME = db_$(subst .,_,$(DOMAIN_NAME))
-DB_USER=abeltran
+DB_USER=
 DB_PASS:=$(shell openssl rand -base64 12)
 DB_ROOT_PASS:=$(shell openssl rand -base64 12)
 
 #WORDPRESS
 ADMIN_USER=abeltran
 ADMIN_PASS:=$(shell openssl rand -base64 12)
-ADMIN_EMAIL=abeltran@student.42malaga.com
+ADMIN_EMAIL=
+USER_PASS=$(shell openssl rand -base64 12)
 
 #DOMAIN
 DOMAIN_NAME=abeltran.42.fr
@@ -40,6 +41,8 @@ all: clear_term up
 clear_term:
 	@clear
 
+envs: $(ENVS)
+
 up: $(ENVS) $(VOLUME_REF) $(VOLUMES)
 	@echo "${GREEN}Starting services...${RESET}"
 	@sudo docker compose -f ./srcs/docker-compose.yml up --build -d --remove-orphans
@@ -63,7 +66,7 @@ clean:
 	@sudo docker compose -f srcs/docker-compose.yml rm -f
 	@echo "${YELLOW}Containers removed${RESET}"
 
-fclean: clean volrm
+fclean: clean cold_clean 
 	@echo "${RED}${BOLD}Removing volumes...${RESET}"
 	@sudo rm -rf ${VOLUMES_DIR}
 	@sudo rm -rf ${VOLUME_REF}

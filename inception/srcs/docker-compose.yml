@@ -8,7 +8,7 @@ services:
   nginx:
     container_name: nginx
     build:
-      context: ./nginx/.
+      context: ./requirements/nginx/.
     image: nginx
     ports:
       - "443:443"
@@ -23,7 +23,7 @@ services:
   mariadb:
     container_name: mariadb
     build: 
-      context: ./mariadb/.
+      context: ./requirements/mariadb/.
     image: mariadb
     networks:
       - inception
@@ -36,7 +36,7 @@ services:
   wordpress:
     container_name: wordpress
     build:
-      context: ./wordpress/.
+      context: ./requirements/wordpress/.
     image: wordpress
     depends_on:
       - mariadb

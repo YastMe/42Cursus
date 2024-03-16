@@ -57,7 +57,7 @@ PHP
 
     # Create example user
     echo -e "\033[1;32mCreating an example user...\033[0m"
-    wp user create YastMe yastme@example.com --role=author --user_pass=42Malaga_ft --allow-root
+    wp user create YastMe yastme@example.com --role=author --user_pass="$USER_PASS" --allow-root
 
     # Update WordPress plugins
     echo -e "\033[1;32mUpdating WordPress plugins...\033[0m"
