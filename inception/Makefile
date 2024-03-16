@@ -5,7 +5,7 @@ DB_PASS:=$(shell openssl rand -base64 12)
 DB_ROOT_PASS:=$(shell openssl rand -base64 12)
 
 #WORDPRESS
-ADMIN_USER=abeltran
+ADMIN_USER=
 ADMIN_PASS:=$(shell openssl rand -base64 12)
 ADMIN_EMAIL=
 USER_PASS=$(shell openssl rand -base64 12)
