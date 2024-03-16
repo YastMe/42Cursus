@@ -24,7 +24,7 @@ RUN mkdir -p /run/mysqld && \
         chown -R mysql /var/lib/mysql
 
 # Copy the configuration script and make it executable
-COPY config.sh .
+COPY tools/config.sh .
 RUN chmod +x config.sh
 
 # Clean up

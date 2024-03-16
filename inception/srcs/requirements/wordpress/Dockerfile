@@ -37,8 +37,8 @@ RUN adduser -D -H -S -G www-data www-data && \
     ln -s /usr/sbin/php-fpm${PHP_VERSION} /usr/sbin/php-fpm
 
 # Copy the configuration script and make it executable
-COPY config.sh .
-COPY home.html .
+COPY tools/config.sh .
+COPY tools/home.html .
 RUN chmod +x config.sh
 
 # Clean up

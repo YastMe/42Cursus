@@ -19,11 +19,11 @@ RUN sed -i 's/user nginx;/user www-data;/' /etc/nginx/nginx.conf
 RUN sed -i 's/keepalive_timeout 65;/keepalive_timeout 5;/' /etc/nginx/nginx.conf
 
 # Copy the configuration script and make it executable
-COPY config.sh .
+COPY tools/config.sh .
 RUN chmod +x config.sh
 
 # Copy the Nginx config file
-COPY nginx_base.conf .
+COPY conf/nginx_base.conf .
 
 # Clean up
 RUN rm -f /var/cache/apk/*
