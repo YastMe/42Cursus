@@ -107,6 +107,7 @@ $(ENV_WORDPRESS):
 	@echo "ADMIN_USER=$(ADMIN_USER)" > $(ENV_WORDPRESS)
 	@echo "ADMIN_PASS=$(ADMIN_PASS)" >> $(ENV_WORDPRESS)
 	@echo "ADMIN_EMAIL=$(ADMIN_EMAIL)" >> $(ENV_WORDPRESS)
+	@echo "USER_PASS=$(USER_PASS)" >> $(ENV_WORDPRESS)
 
 $(VOLUMES_DIR):
 	@echo "${GREEN}Creating volumes real directory...${RESET}"
