@@ -1,0 +1,7 @@
+.vscode
+obj
+*.o
+a.out
+ircserv
+.DS_Store
+.idea
