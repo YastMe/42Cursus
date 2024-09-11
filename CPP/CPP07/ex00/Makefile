@@ -1,0 +1,36 @@
+CNAMES = main
+
+CFLAGS = -Wall -Wextra -Werror -std=c++98
+
+SRC = src/
+OBJ = obj/
+
+CFILES = $(addprefix $(SRC), $(addsuffix .cpp, $(CNAMES)))
+OFILES = $(addprefix $(OBJ), $(addsuffix .o, $(CNAMES)))
+
+NAME = templates
+
+all: $(NAME)
+
+$(NAME): $(OFILES)
+	@clang++ $(CFLAGS) $(OFILES) -o $(NAME)
+	@echo "$(NAME) compiled"
+
+$(OFILES): $(CFILES)
+	@mkdir -p $(OBJ)
+	@clang++ $(CFLAGS) -c $(CFILES)
+	@mv *.o $(OBJ)
+
+debug:
+	@clang++ $(CFLAGS) -g $(CFILES) -o $(NAME)
+	@echo "$(NAME) compiled in debug mode"
+
+clean:
+	@rm -rf $(OBJ)
+
+fclean: clean
+	@rm -rf $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re

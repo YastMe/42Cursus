@@ -6,7 +6,7 @@
 /*   By: abeltran <abeltran@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 14:06:51 by abeltran          #+#    #+#             */
-/*   Updated: 2023/08/23 11:40:44 by abeltran         ###   ########.fr       */
+/*   Updated: 2024/08/15 13:59:40 by abeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,5 @@ void	Sed::replace(std::string s1, std::string s2)
 		file_out.close();
 	}
 	else
-		std::cerr << RED << "Couldn't open file." << DEFAULT << std::endl;
+		std::cerr << Yellow << "Couldn't open file." << DEFAULT << std::endl;
 }

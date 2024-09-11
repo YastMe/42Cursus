@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abeltran <abeltran@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/11 14:00:22 by abeltran          #+#    #+#             */
-/*   Updated: 2024/08/15 13:59:40 by abeltran         ###   ########.fr       */
+/*   Created: 2024/07/22 13:31:27 by abeltran          #+#    #+#             */
+/*   Updated: 2024/07/23 13:08:22 by abeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "../include/Sed.hpp"
+#ifndef BASE_HPP
+# define BASE_HPP
 
-int main(int argc, char const *argv[])
+# include <iostream>
+# include <time.h>
+# include <stdlib.h>
+
+class Base
 {
-	if (argc == 4)
-	{
-		Sed sed(argv[1]);
-		sed.replace(argv[2], argv[3]);
-	}
-	else
-		std::cerr << Yellow << "Usage: ./sed [filename] [s1] [s2]" << std::endl << DEFAULT;
-	return 0;
-}
+	public:
+		virtual ~Base();
+};
+
+class A : public Base {};
+class B : public Base {};
+class C : public Base {};
+
+Base	*generate(void);
+Base	*generate(char type);
+void	identify(Base *p);
+void	identify(Base &p);
+
+#endif

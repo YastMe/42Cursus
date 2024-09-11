@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abeltran <abeltran@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/11 14:00:22 by abeltran          #+#    #+#             */
-/*   Updated: 2024/08/15 13:59:40 by abeltran         ###   ########.fr       */
+/*   Created: 2024/07/22 13:09:49 by abeltran          #+#    #+#             */
+/*   Updated: 2024/07/22 13:12:32 by abeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "../include/Sed.hpp"
+#include "../include/Serializer.hpp"
 
-int main(int argc, char const *argv[])
+uintptr_t	Serializer::serialize(Data *ptr)
 {
-	if (argc == 4)
-	{
-		Sed sed(argv[1]);
-		sed.replace(argv[2], argv[3]);
-	}
-	else
-		std::cerr << Yellow << "Usage: ./sed [filename] [s1] [s2]" << std::endl << DEFAULT;
-	return 0;
+	return (reinterpret_cast<uintptr_t>(ptr));
+}
+
+Data*	Serializer::deserialize(uintptr_t raw)
+{
+	return (reinterpret_cast<Data *>(raw));
 }

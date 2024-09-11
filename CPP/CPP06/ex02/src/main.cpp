@@ -5,22 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abeltran <abeltran@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/11 14:00:22 by abeltran          #+#    #+#             */
-/*   Updated: 2024/08/15 13:59:40 by abeltran         ###   ########.fr       */
+/*   Created: 2024/07/23 12:59:31 by abeltran          #+#    #+#             */
+/*   Updated: 2024/08/15 15:00:42 by abeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "../include/Sed.hpp"
+#include "../include/Base.hpp"
+#include <cstring>
+
+#define RED "\033[1;31m"
+#define DEFAULT "\033[0m"
 
 int main(int argc, char const *argv[])
 {
-	if (argc == 4)
-	{
-		Sed sed(argv[1]);
-		sed.replace(argv[2], argv[3]);
-	}
+	Base *base = NULL;
+	if (argc == 2 && std::strlen(argv[1]) == 1)
+		base = generate(*argv[1]);
+	else if (argc == 1)
+		base = generate();
 	else
-		std::cerr << Yellow << "Usage: ./sed [filename] [s1] [s2]" << std::endl << DEFAULT;
-	return 0;
+	{
+		std::cout << RED << "Usage: ./identify [type]" << DEFAULT << std::endl;
+		return (1);
+	}
+	identify(base);
+	identify(*base);
 }
+

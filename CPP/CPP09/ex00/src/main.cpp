@@ -5,22 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abeltran <abeltran@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/11 14:00:22 by abeltran          #+#    #+#             */
-/*   Updated: 2024/08/15 13:59:40 by abeltran         ###   ########.fr       */
+/*   Created: 2024/08/21 16:14:54 by abeltran          #+#    #+#             */
+/*   Updated: 2024/08/21 16:31:34 by abeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "../include/Sed.hpp"
+#include "../include/BitcoinExchange.hpp"
 
 int main(int argc, char const *argv[])
 {
-	if (argc == 4)
+	if (argc != 2)
 	{
-		Sed sed(argv[1]);
-		sed.replace(argv[2], argv[3]);
+		std::cerr << RED "Usage: ./bitcoin [filename]" DEFAULT << std::endl;
+		return (1);
 	}
-	else
-		std::cerr << Yellow << "Usage: ./sed [filename] [s1] [s2]" << std::endl << DEFAULT;
-	return 0;
+
+	BitcoinExchange	btc = BitcoinExchange();
+	btc.processFile(argv[1]);
+
+	return (0);
 }

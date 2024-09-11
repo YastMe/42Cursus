@@ -5,22 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abeltran <abeltran@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/11 14:00:22 by abeltran          #+#    #+#             */
-/*   Updated: 2024/08/15 13:59:40 by abeltran         ###   ########.fr       */
+/*   Created: 2024/08/21 16:32:21 by abeltran          #+#    #+#             */
+/*   Updated: 2024/08/21 16:47:16 by abeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "../include/Sed.hpp"
+#include "../include/RPN.hpp"
 
 int main(int argc, char const *argv[])
 {
-	if (argc == 4)
+	if (argc != 2)
 	{
-		Sed sed(argv[1]);
-		sed.replace(argv[2], argv[3]);
+		std::cout << RED << "Usage: ./rpn \"expression\"" << DEFAULT << std::endl;
+		return (1);
 	}
-	else
-		std::cerr << Yellow << "Usage: ./sed [filename] [s1] [s2]" << std::endl << DEFAULT;
-	return 0;
+
+	RPN rpn;
+	rpn.calculate(argv[1]);
+	return (0);
 }
